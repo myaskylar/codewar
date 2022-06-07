@@ -3,6 +3,10 @@ const array = [
   19, 20,
 ];
 
+const array2 = [
+  -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20,
+];
+
 const arrange = (arr) => {
     let emt = [];
  arr.map((elem, index)=>{
@@ -11,6 +15,7 @@ const arrange = (arr) => {
     elem - arr[index - 1] != 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : null;
     elem - arr[index - 1] != 1 && elem - arr[index + 1] == -1 ? emt.push(elem) : null;
     elem - arr[index - 1] == 1 && elem - arr[index + 1] == -1 ? emt.push("-") : null;
+    elem - arr[index + 1] != -1 ? emt.push(elem) : null;
  })
 
 let filterArr = emt
@@ -24,9 +29,17 @@ let filterArr = emt
  );
 
 }
+
+const solution = (list) =>{
+   return list.reduce((text, value, index, array)=>
+      text + "," + (value - array[index + 1] != -1 ? value : "no")
+    )
+}
+// -6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20,
 //"-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
+// -6, -3 - 1, 3 - 5, 7 - 11, 14, 15, 17 - 20;
 //  return filterArr.reduce(
 //    (text, value, i, array) =>
 //      text + (i < array.length - 1 ? ", " : " or ") + value
 //  );
-console.log(arrange(array));
+console.log(solution(array2));
