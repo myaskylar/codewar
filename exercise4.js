@@ -7,9 +7,10 @@ const arrange = (arr) => {
     let emt = [];
  arr.map((elem, index)=>{
      //index == 0 ? emt.push(elem): null
-     elem - arr[index -1] == 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : "-";
-     elem - arr[index -1] != 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : "-";
-    elem - arr[index - 1] != 1 && elem - arr[index + 1] == -1 ? emt.push(elem) : "-";
+    elem - arr[index -1] == 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : null;
+    elem - arr[index - 1] != 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : null;
+    elem - arr[index - 1] != 1 && elem - arr[index + 1] == -1 ? emt.push(elem) : null;
+    elem - arr[index - 1] == 1 && elem - arr[index + 1] == -1 ? emt.push("-") : null;
  })
  return emt;
 }
