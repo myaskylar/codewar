@@ -4,8 +4,14 @@ const array = [
 ];
 
 const arrange = (arr) => {
-    const count = arr.reduce((a,b)=> ([...a, [b]]), [] )
- return count;
+    let emt = [];
+ arr.map((elem, index)=>{
+     //index == 0 ? emt.push(elem): null
+     elem - arr[index -1] == 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : "-";
+     elem - arr[index -1] != 1 && elem - arr[index + 1] != -1 ? emt.push(elem) : "-";
+    elem - arr[index - 1] != 1 && elem - arr[index + 1] == -1 ? emt.push(elem) : "-";
+ })
+ return emt;
 }
 
 console.log(arrange(array));
