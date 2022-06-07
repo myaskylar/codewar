@@ -12,7 +12,21 @@ const arrange = (arr) => {
     elem - arr[index - 1] != 1 && elem - arr[index + 1] == -1 ? emt.push(elem) : null;
     elem - arr[index - 1] == 1 && elem - arr[index + 1] == -1 ? emt.push("-") : null;
  })
- return emt;
-}
 
+let filterArr = emt
+  .filter((elem, index) => {
+    return elem != emt[index + 1];
+  })
+
+ return filterArr.reduce(
+   (text, value, i, array) =>
+     text + (array[i - 1] == "-" || array[i + 1] != "-" && value != "-" ? value + "," : value)
+ );
+
+}
+//"-10--8,-6,-3-1,3-5,7-11,14,15,17-20"
+//  return filterArr.reduce(
+//    (text, value, i, array) =>
+//      text + (i < array.length - 1 ? ", " : " or ") + value
+//  );
 console.log(arrange(array));
