@@ -25,8 +25,8 @@ let filterArr = emt
 
  return filterArr.reduce(
    (text, value, i, array) =>
-      text + (array[i - 1] == "-" || array[i + 1] != "-" && value != "-" ? value + "," :  value)
-     
+     text +
+     (value == "-" || array[i - 1] == "-" ? value : "," + value)
  );
 
 }
